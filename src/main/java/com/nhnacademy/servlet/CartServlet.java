@@ -2,18 +2,27 @@ package com.nhnacademy.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+@WebServlet(name = "cartServlet", urlPatterns = "/cart")
 public class CartServlet extends HttpServlet {
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
         resp.setContentType("text/plain");
-        resp.setCharacterEncoding("UTF-8");
+//        resp.setCharacterEncoding("UTF-8");
 
         String onion = req.getParameter("onionNum");
         String egg = req.getParameter("eggNum");
@@ -50,5 +59,18 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
 
+//        int count = (int) getServletContext().getAttribute("counter");
+//        getServletContext().setAttribute("counter", ++count);
+//        HttpSession session = req.getSession(false);
+//        if (Objects.isNull(session)) {
+//            resp.sendRedirect("/loginForm.html");
+//        } else {
+//            PrintWriter out = resp.getWriter();
+//            out.println("Login Success");
+//            out.println("User: " + session.getAttribute("id"));
+//
+//            out.println("<a href='/foods'>/foods</a>");
+//            out.println("<a href='/logout'>/logout</a>");
+//        }
     }
 }
